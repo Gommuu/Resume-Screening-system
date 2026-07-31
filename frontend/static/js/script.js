@@ -1,85 +1,208 @@
-// ===========================
-// Resume Preview
-// ===========================
+// ==========================
+// DOM Elements
+// ==========================
 
-const previewBtn = document.querySelector(".preview-btn");
+const uploadInput = document.getElementById("resumeUpload");
+const resumeName = document.getElementById("resumeName");
+const resumeSize = document.getElementById("resumeSize");
 
-if (previewBtn) {
+const analyzeBtn = document.getElementById("analyzeBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const resetBtn = document.getElementById("resetBtn");
 
-    previewBtn.addEventListener("click", () => {
+const company = document.getElementById("company");
+const jobRole = document.getElementById("jobRole");
 
-        alert("Resume Preview will be available after backend integration.");
+// ==========================
+// Candidate Info
+// ==========================
 
-    });
+const candidateName = document.getElementById("candidateName");
+const candidateEmail = document.getElementById("candidateEmail");
+const candidatePhone = document.getElementById("candidatePhone");
 
-}
+const atsScore = document.getElementById("atsScore");
+const resumeMatch = document.getElementById("resumeMatch");
 
-// ===========================
+const matchedSkills = document.getElementById("matchedSkills");
+const missingSkills = document.getElementById("missingSkills");
+
+const recommendationTitle = document.getElementById("recommendationTitle");
+const recommendationText = document.getElementById("recommendationText");
+
+
+// ==========================
+// Upload Resume
+// ==========================
+
+uploadInput.addEventListener("change", () => {
+
+    if (!uploadInput.files.length) return;
+
+    const file = uploadInput.files[0];
+
+    resumeName.textContent = file.name;
+
+    resumeSize.textContent =
+        (file.size / 1024).toFixed(2) + " KB";
+
+});
+
+
+// ==========================
 // Analyze Resume
-// ===========================
+// ==========================
 
-const analyzeBtn = document.querySelector(".analyze-btn");
+analyzeBtn.addEventListener("click", async () => {
 
-if (analyzeBtn) {
+    if (!uploadInput.files.length) {
 
-    analyzeBtn.addEventListener("click", () => {
+        alert("Please upload a resume first.");
 
-        alert("Backend not connected yet.");
+        return;
+    }
 
-    });
+    if (company.value === "") {
 
-}
+        alert("Please select company.");
 
-// ===========================
-// Download Report
-// ===========================
+        return;
+    }
 
-const downloadBtn = document.querySelector(".download-btn");
+    if (jobRole.value === "") {
 
-if (downloadBtn) {
+        alert("Please select job role.");
 
-    downloadBtn.addEventListener("click", () => {
+        return;
+    }
 
-        alert("Report generation will be available after backend integration.");
+    analyzeBtn.disabled = true;
 
-    });
+    analyzeBtn.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing...';
 
-}
+    const formData = new FormData();
 
-// ===========================
-// Analyze Another Resume
-// ===========================
+    formData.append("resume", uploadInput.files[0]);
 
-const anotherBtn = document.querySelector(".another-btn");
+    formData.append("company", company.value);
 
-if (anotherBtn) {
+    formData.append("job_role", jobRole.value);
 
-    anotherBtn.addEventListener("click", () => {
+    try {
 
-        location.reload();
+        const response = await fetch("/analyze", {
 
-    });
+            method: "POST",
 
-}
-
-// ===========================
-// Back to Home
-// ===========================
-
-const homeBtn = document.querySelector(".home-btn");
-
-if (homeBtn) {
-
-    homeBtn.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
+            body: formData
 
         });
 
-    });
+        if (!response.ok)
+            throw new Error("Server Error");
+
+        const data = await response.json();
+
+        updateDashboard(data);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Backend is not connected.");
+
+    }
+
+    finally {
+
+        analyzeBtn.disabled = false;
+
+        analyzeBtn.innerHTML =
+            '<i class="fa-solid fa-magnifying-glass"></i> Analyze Resume';
+
+    }
+
+});
+
+
+// ==========================
+// Update Dashboard
+// ==========================
+
+function updateDashboard(data) {
+
+    candidateName.textContent =
+        data.name || "Candidate";
+
+    candidateEmail.innerHTML =
+        `<i class="fa-regular fa-envelope"></i> ${data.email || "-"}`;
+
+    candidatePhone.innerHTML =
+        `<i class="fa-solid fa-phone"></i> ${data.phone || "-"}`;
+
+    atsScore.textContent =
+        `${data.ats_score}%`;
+
+    resumeMatch.textContent =
+        `${data.resume_match}%`;
+
+    recommendationTitle.textContent =
+        data.recommendation || "Recommendation";
+
+    recommendationText.textContent =
+        data.message || "";
+
+    matchedSkills.innerHTML = "";
+
+    if (data.matched_skills) {
+
+        data.matched_skills.forEach(skill => {
+
+            matchedSkills.innerHTML +=
+
+                `<span>${skill}</span>`;
+
+        });
+
+    }
+
+    missingSkills.innerHTML = "";
+
+    if (data.missing_skills) {
+
+        data.missing_skills.forEach(skill => {
+
+            missingSkills.innerHTML +=
+
+                `<span>${skill}</span>`;
+
+        });
+
+    }
 
 }
+
+
+// ==========================
+// Download Report
+// ==========================
+
+downloadBtn.addEventListener("click", () => {
+
+    window.open("/download-report");
+
+});
+
+
+// ==========================
+// Reset
+// ==========================
+
+resetBtn.addEventListener("click", () => {
+
+    location.reload();
+
+});

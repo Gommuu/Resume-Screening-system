@@ -7,11 +7,8 @@
 <nav class="navbar">
 
     <div class="logo">
-
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
-
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkillSense Logo">
         <h2>AI Resume Screening System</h2>
-
     </div>
 
     <ul class="nav-links">
@@ -22,7 +19,7 @@
         </li>
 
         <li>
-            <i class="fa-regular fa-rectangle-list"></i>
+            <i class="fa-solid fa-chart-line"></i>
             Dashboard
         </li>
 
@@ -33,12 +30,9 @@
 
     </ul>
 
-    <a href="https://github.com" target="_blank" class="github-btn">
-
+    <a href="https://github.com" class="github-btn" target="_blank">
         <i class="fab fa-github"></i>
-
         GitHub
-
     </a>
 
 </nav>
@@ -50,18 +44,14 @@
     <div class="hero-left">
 
         <h1>
-
             <span>AI</span>
-
             Resume Screening System
-
         </h1>
 
         <p>
-
-            Upload a resume and select the company and job role
-            to analyze the candidate's fit for the role using AI.
-
+            Upload a resume, choose a company and role,
+            and let AI evaluate the candidate with ATS scoring,
+            skill matching and intelligent recommendations.
         </p>
 
     </div>
@@ -77,12 +67,12 @@
 
             <li>
                 <i class="fa-solid fa-circle-check"></i>
-                Skill Matching
+                Resume Match Analysis
             </li>
 
             <li>
                 <i class="fa-solid fa-circle-check"></i>
-                Missing Skills Detection
+                Missing Skill Detection
             </li>
 
             <li>
@@ -96,7 +86,8 @@
 
     <div class="hero-right">
 
-        <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Hero">
+        <img src="{{ url_for('static', filename='images/hero.png') }}"
+             alt="AI Resume Screening">
 
     </div>
 
@@ -106,423 +97,345 @@
 
 <div class="main-container">
 
-<!-- ================= LEFT PANEL ================= -->
+    <!-- ================= LEFT PANEL ================= -->
 
-<div class="left-panel">
+    <div class="left-panel">
 
-<div class="sidebar-card">
+        <div class="sidebar-card">
 
-<h2>
+            <h2>1. Upload Resume</h2>
 
-1. Upload Resume
+            <div class="resume-box">
 
-</h2>
+                <input
+                    type="file"
+                    id="resumeUpload"
+                    accept=".pdf,.doc,.docx"
+                    hidden>
 
-<div class="resume-box">
+                <label for="resumeUpload" class="preview-btn">
 
-<div class="resume-file">
+                    <i class="fa-solid fa-upload"></i>
 
-<i class="fa-solid fa-file-lines"></i>
+                    Upload Resume
 
-<div>
+                </label>
 
-<h4>Vansh_Gupta_Resume.pdf</h4>
+                <div class="resume-file" id="resumeInfo">
 
-<p>246 KB</p>
+                    <i class="fa-solid fa-file-lines"></i>
 
-</div>
+                    <div>
 
-<i class="fa-solid fa-circle-check success"></i>
+                        <h4 id="resumeName">
 
-</div>
+                            No Resume Selected
 
-<button class="preview-btn">
+                        </h4>
 
-<i class="fa-regular fa-file"></i>
+                        <p id="resumeSize">
 
-Preview Resume
+                            PDF / DOC / DOCX
 
-</button>
+                        </p>
 
-</div>
+                    </div>
 
-<h2>
+                </div>
 
-2. Company
+            </div>
 
-</h2>
+            <h2>2. Company</h2>
 
-<select>
+            <select id="company">
 
-<option>Select Company</option>
+                <option value="">Select Company</option>
 
-<option>Google</option>
+                <option>Google</option>
+                <option>Microsoft</option>
+                <option>Amazon</option>
+                <option>Infosys</option>
+                <option>Accenture</option>
 
-<option>Microsoft</option>
+            </select>
 
-<option>Amazon</option>
+            <h2>3. Job Role</h2>
 
-<option>Infosys</option>
+            <select id="jobRole">
 
-<option>Accenture</option>
+                <option value="">Select Job Role</option>
 
-</select>
+                <option>Software Engineer</option>
+                <option>Data Analyst</option>
+                <option>Data Scientist</option>
+                <option>Machine Learning Engineer</option>
+                <option>HR Manager</option>
 
-<h2>
+            </select>
 
-3. Job Role
+            <button class="analyze-btn" id="analyzeBtn">
 
-</h2>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-<select>
+                Analyze Resume
 
-<option>Select Job Role</option>
+            </button>
 
-<option>Software Engineer</option>
+            <p class="support-text">
 
-<option>Data Analyst</option>
+                Supported Formats:
+                PDF, DOC, DOCX
 
-<option>Data Scientist</option>
-
-<option>Machine Learning Engineer</option>
-
-<option>HR Manager</option>
-
-</select>
-
-<button class="analyze-btn">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
-Analyze Resume
-
-</button>
-
-<p class="support-text">
-
-Supported formats:
-PDF, DOCX
-
-</p>
-
-</div>
-
-</div>
-
-<!-- ================= RIGHT PANEL START ================= -->
-
-<div class="right-panel">
-
-<h1>
-
-Analysis Results
-
-</h1>
-<!-- ================= TOP RESULT CARD ================= -->
-
-<div class="top-card">
-
-    <div class="candidate-card">
-
-        <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="Avatar">
-
-        <div class="candidate-info">
-
-            <p class="candidate-title">Candidate</p>
-
-            <h2>Vansh Gupta</h2>
-
-            <p>
-                <i class="fa-regular fa-envelope"></i>
-                vanshgupta@email.com
-            </p>
-
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                +91 9876543210
             </p>
 
         </div>
 
     </div>
 
-    <div class="score-card">
+    <!-- ================= RIGHT PANEL ================= -->
 
-        <h3>ATS SCORE</h3>
+    <div class="right-panel">
 
-        <div class="circle green">
+        <h1>Analysis Results</h1>
 
-            <span>92%</span>
+        <!-- ================= TOP RESULT CARD ================= -->
+
+        <div class="top-card">
+
+            <div class="candidate-card">
+
+                <img src="{{ url_for('static', filename='images/avatar.png') }}"
+                     alt="Candidate">
+
+                <div class="candidate-info">
+
+                    <p class="candidate-title">
+
+                        Candidate Information
+
+                    </p>
+
+                    <h2 id="candidateName">
+
+                        No Analysis Yet
+
+                    </h2>
+
+                    <p id="candidateEmail">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        --
+
+                    </p>
+
+                    <p id="candidatePhone">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        --
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="score-card">
+
+                <h3>ATS SCORE</h3>
+
+                <div class="circle green">
+
+                    <span id="atsScore">--</span>
+
+                </div>
+
+                <p>Waiting for Analysis</p>
+
+            </div>
+
+            <div class="score-card">
+
+                <h3>RESUME MATCH</h3>
+
+                <div class="circle blue">
+
+                    <span id="resumeMatch">--</span>
+
+                </div>
+
+                <p>Waiting for Analysis</p>
+
+            </div>
 
         </div>
 
-        <p>Excellent Match</p>
+        <!-- ================= SECOND ROW ================= -->
+                <div class="second-row">
 
-    </div>
+            <!-- ================= MATCHED SKILLS ================= -->
 
-    <div class="score-card">
+            <div class="skills-card">
 
-        <h3>RESUME MATCH</h3>
+                <h2>
 
-        <div class="circle blue">
+                    <i class="fa-solid fa-circle-check"></i>
 
-            <span>89%</span>
+                    Matched Skills
+
+                </h2>
+
+                <div class="tags" id="matchedSkills">
+
+                    <p class="empty-text">
+
+                        Upload a resume and click Analyze Resume to view matched skills.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ================= SKILL OVERVIEW ================= -->
+
+            <div class="overview-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    Skills Match Overview
+
+                </h2>
+
+                <div id="skillOverview">
+
+                    <div class="skill">
+
+                        <label>Waiting for analysis...</label>
+
+                        <div class="progress">
+
+                            <div style="width:0%"></div>
+
+                        </div>
+
+                        <span>0%</span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <p>Great Match</p>
+        <!-- ================= THIRD ROW ================= -->
+
+        <div class="third-row">
+
+            <!-- ================= MISSING SKILLS ================= -->
+
+            <div class="missing-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Missing Skills
+
+                </h2>
+
+                <div class="tags orange-tags" id="missingSkills">
+
+                    <p class="empty-text">
+
+                        Missing skills will appear here after analysis.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ================= RECOMMENDATION ================= -->
+
+            <div class="recommend-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    Recommendation
+
+                </h2>
+
+                <div class="recommend-box">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <div>
+
+                        <h3 id="recommendationTitle">
+
+                            Waiting for Analysis
+
+                        </h3>
+
+                        <p id="recommendationText">
+
+                            Upload a resume, select a company and job role,
+                            then click Analyze Resume to generate AI insights.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= ACTION BUTTONS ================= -->
+
+        <div class="bottom-buttons">
+
+            <button
+                class="download-btn"
+                id="downloadBtn">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Report
+
+            </button>
+
+            <button
+                class="another-btn"
+                id="resetBtn">
+
+                <i class="fa-solid fa-rotate-right"></i>
+
+                Analyze Another Resume
+
+            </button>
+
+            <button
+                class="home-btn"
+                onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+                <i class="fa-solid fa-house"></i>
+
+                Back To Home
+
+            </button>
+
+        </div>
 
     </div>
-
-</div>
-
-<!-- ================= SECOND ROW ================= -->
-
-<div class="second-row">
-
-<div class="skills-card">
-
-<h2>
-
-<i class="fa-solid fa-circle-check"></i>
-
-Skills Found (Matched)
-
-</h2>
-
-<div class="tags">
-
-<span>Python</span>
-
-<span>Machine Learning</span>
-
-<span>SQL</span>
-
-<span>React</span>
-
-<span>Git</span>
-
-</div>
-
-</div>
-
-<div class="overview-card">
-
-<h2>
-
-<i class="fa-solid fa-chart-column"></i>
-
-Skills Match Overview
-
-</h2>
-
-<div class="skill">
-
-<label>Python</label>
-
-<div class="progress">
-
-<div style="width:100%"></div>
-
-</div>
-
-<span>100%</span>
-
-</div>
-
-<div class="skill">
-
-<label>Machine Learning</label>
-
-<div class="progress">
-
-<div style="width:95%"></div>
-
-</div>
-
-<span>95%</span>
-
-</div>
-
-<div class="skill">
-
-<label>SQL</label>
-
-<div class="progress">
-
-<div style="width:90%"></div>
-
-</div>
-
-<span>90%</span>
-
-</div>
-
-<div class="skill">
-
-<label>React</label>
-
-<div class="progress">
-
-<div style="width:80%"></div>
-
-</div>
-
-<span>80%</span>
-
-</div>
-
-<div class="skill">
-
-<label>Git</label>
-
-<div class="progress">
-
-<div style="width:70%"></div>
-
-</div>
-
-<span>70%</span>
-
-</div>
-
-<div class="skill">
-
-<label>Docker</label>
-
-<div class="progress orange">
-
-<div style="width:20%"></div>
-
-</div>
-
-<span>20%</span>
-
-</div>
-
-<div class="skill">
-
-<label>AWS</label>
-
-<div class="progress orange">
-
-<div style="width:15%"></div>
-
-</div>
-
-<span>15%</span>
-
-</div>
-
-<div class="skill">
-
-<label>Power BI</label>
-
-<div class="progress orange">
-
-<div style="width:10%"></div>
-
-</div>
-
-<span>10%</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= THIRD ROW ================= -->
-
-<div class="third-row">
-
-<div class="missing-card">
-
-<h2>
-
-<i class="fa-solid fa-triangle-exclamation"></i>
-
-Missing Skills
-
-</h2>
-
-<div class="tags orange-tags">
-
-<span>Docker</span>
-
-<span>AWS</span>
-
-<span>Power BI</span>
-
-</div>
-
-</div>
-
-<div class="recommend-card">
-
-<h2>
-
-<i class="fa-solid fa-lightbulb"></i>
-
-Recommendation
-
-</h2>
-
-<div class="recommend-box">
-
-<i class="fa-solid fa-circle-check"></i>
-
-<div>
-
-<h3>Suitable Candidate</h3>
-
-<p>
-
-This candidate is a good match for the role.
-Most required skills are present.
-Recommended for next round.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= BUTTONS ================= -->
-
-<div class="bottom-buttons">
-
-<button class="download-btn">
-
-<i class="fa-solid fa-download"></i>
-
-Download Report (PDF)
-
-</button>
-
-<button class="another-btn">
-
-<i class="fa-solid fa-rotate-right"></i>
-
-Analyze Another Resume
-
-</button>
-
-<button class="home-btn">
-
-<i class="fa-solid fa-house"></i>
-
-Back to Home
-
-</button>
-
-</div>
-
-</div>
 
 </div>
 
