@@ -1,8 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from preprocessing import preprocess_text
-
+from backend.preprocessing import preprocess_text
 
 def calculate_similarity(resume_text, job_description):
     """

@@ -1,4 +1,4 @@
-from preprocessing import preprocess_text
+from backend.preprocessing import preprocess_text
 
 SKILLS = [
     "python",
@@ -17,7 +17,7 @@ SKILLS = [
     "machine learning",
     "deep learning",
     "tensorflow",
-    "pytorch",
+    "keras",
     "pandas",
     "numpy",
     "git"
@@ -25,7 +25,6 @@ SKILLS = [
 
 
 def extract_skills(text):
-
     text = preprocess_text(text)
 
     found_skills = []
@@ -34,13 +33,12 @@ def extract_skills(text):
         if skill in text:
             found_skills.append(skill)
 
-    return list(set(found_skills))
+    return found_skills
+
 
 if __name__ == "__main__":
     sample = """
-    I know Python, SQL, Machine Learning, Pandas and Git.
+    I know Python, SQL, Flask, Git and Machine Learning.
     """
 
-    skills = extract_skills(sample)
-
-    print(skills)
+    print(extract_skills(sample))
