@@ -10,5 +10,5 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 if __name__ == "__main__":
-    sample_text = extract_text_from_pdf("../dataset/Resume.pdf")
+    sample_text = extract_text_from_pdf("dataset/Resume.pdf")
     print(sample_text)
