@@ -1,0 +1,831 @@
+/* ===========================
+   GOOGLE FONT & RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fc;
+    color:#1f2937;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ===========================
+        NAVBAR
+=========================== */
+
+.navbar{
+
+    width:100%;
+
+    height:75px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 60px;
+
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo img{
+
+    width:48px;
+
+    height:48px;
+
+}
+
+.logo h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#1e3a8a;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.nav-links li{
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+    color:#555;
+
+    transition:.3s;
+
+}
+
+.nav-links li:hover{
+
+    color:#2563eb;
+
+}
+
+.active{
+
+    color:#2563eb !important;
+
+    font-weight:600;
+
+}
+
+.github-btn{
+
+    background:#111827;
+
+    color:#fff;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+.github-btn:hover{
+
+    background:#000;
+
+}
+
+/* ===========================
+        HERO
+=========================== */
+
+.hero{
+
+    width:100%;
+
+    min-height:260px;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    color:#fff;
+
+    display:grid;
+
+    grid-template-columns:1.4fr 1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+
+    padding:60px;
+
+}
+
+.hero-left h1{
+
+    font-size:44px;
+
+    margin-bottom:18px;
+
+    line-height:1.2;
+
+}
+
+.hero-left span{
+
+    color:#fde047;
+
+}
+
+.hero-left p{
+
+    font-size:17px;
+
+    opacity:.95;
+
+    line-height:1.7;
+
+}
+
+.hero-center ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.hero-center li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:16px;
+
+}
+
+.hero-center i{
+
+    color:#22c55e;
+
+}
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.hero-right img{
+
+    width:260px;
+
+}
+
+/* ===========================
+        MAIN
+=========================== */
+
+.main-container{
+
+    width:95%;
+
+    margin:35px auto;
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:30px;
+
+}
+
+/* ===========================
+      LEFT PANEL
+=========================== */
+
+.left-panel{
+
+    width:100%;
+
+}
+
+.sidebar-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+}
+
+.sidebar-card h2{
+
+    font-size:18px;
+
+    margin-bottom:18px;
+
+    color:#1f2937;
+
+}
+
+/* ===========================
+      RESUME CARD
+=========================== */
+
+.resume-box{
+
+    border:2px dashed #3b82f6;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin-bottom:28px;
+
+    background:#eff6ff;
+
+}
+
+.resume-file{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.resume-file i:first-child{
+
+    font-size:28px;
+
+    color:#2563eb;
+
+}
+
+.resume-file h4{
+
+    font-size:15px;
+
+}
+
+.resume-file p{
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+.success{
+
+    color:#22c55e;
+
+    font-size:22px;
+
+}
+
+.preview-btn{
+
+    width:100%;
+
+    border:none;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.preview-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================
+        DROPDOWN
+=========================== */
+
+select{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #d1d5db;
+
+    margin-bottom:24px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+select:focus{
+
+    border-color:#2563eb;
+
+}
+
+/* ===========================
+    ANALYZE BUTTON
+=========================== */
+
+.analyze-btn{
+
+    width:100%;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.analyze-btn:hover{
+
+    background:#15803d;
+
+}
+
+.support-text{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-top:18px;
+
+    font-size:14px;
+
+}
+/* ===========================
+      RIGHT PANEL
+=========================== */
+
+.right-panel{
+    width:100%;
+}
+
+.right-panel h1{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#1f2937;
+}
+
+/* ===========================
+      TOP CARD
+=========================== */
+
+.top-card{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.candidate-card,
+.score-card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.candidate-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.candidate-card img{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.candidate-title{
+    color:#777;
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.candidate-info h2{
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.candidate-info p{
+    color:#555;
+    margin:8px 0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:15px;
+}
+
+/* ===========================
+        SCORE CARD
+=========================== */
+
+.score-card{
+    text-align:center;
+}
+
+.score-card h3{
+    color:#555;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+.circle{
+    width:120px;
+    height:120px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:700;
+    background:#fff;
+}
+
+.circle.green{
+    border:10px solid #22c55e;
+    color:#22c55e;
+}
+
+.circle.blue{
+    border:10px solid #2563eb;
+    color:#2563eb;
+}
+
+.score-card p{
+    font-size:15px;
+    color:#666;
+}
+
+/* ===========================
+        SECOND ROW
+=========================== */
+
+.second-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.skills-card,
+.overview-card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.skills-card h2,
+.overview-card h2{
+    font-size:20px;
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.skills-card h2 i,
+.overview-card h2 i{
+    color:#2563eb;
+    margin-right:8px;
+}
+
+/* ===========================
+      SKILL TAGS
+=========================== */
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tags span{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:9px 16px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:500;
+}
+
+.orange-tags span{
+    background:#fff7ed;
+    color:#ea580c;
+}
+
+/* ===========================
+      PROGRESS BAR
+=========================== */
+
+.skill{
+    margin-bottom:18px;
+}
+
+.skill label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:5px;
+}
+
+.progress div{
+    height:100%;
+    background:#2563eb;
+}
+
+.progress.orange div{
+    background:#f97316;
+}
+
+.skill span{
+    font-size:13px;
+    color:#555;
+}
+
+/* ===========================
+        THIRD ROW
+=========================== */
+
+.third-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.missing-card,
+.recommend-card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.missing-card h2,
+.recommend-card h2{
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+.recommend-box{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+}
+
+.recommend-box i{
+    color:#22c55e;
+    font-size:34px;
+}
+
+.recommend-box h3{
+    color:#16a34a;
+    margin-bottom:8px;
+}
+
+.recommend-box p{
+    color:#666;
+    line-height:1.6;
+}
+
+/* ===========================
+      BOTTOM BUTTONS
+=========================== */
+
+.bottom-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.download-btn,
+.another-btn,
+.home-btn{
+
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
+    padding:15px 22px;
+    color:#fff;
+    font-size:15px;
+    transition:.3s;
+}
+
+.download-btn{
+    background:#2563eb;
+}
+
+.download-btn:hover{
+    background:#1d4ed8;
+}
+
+.another-btn{
+    background:#16a34a;
+}
+
+.another-btn:hover{
+    background:#15803d;
+}
+
+.home-btn{
+    background:#6b7280;
+}
+
+.home-btn:hover{
+    background:#4b5563;
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:1100px){
+
+.hero{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.hero-center{
+    margin:25px 0;
+}
+
+.main-container{
+    grid-template-columns:1fr;
+}
+
+.top-card{
+    grid-template-columns:1fr;
+}
+
+.second-row{
+    grid-template-columns:1fr;
+}
+
+.third-row{
+    grid-template-columns:1fr;
+}
+
+.bottom-buttons{
+    flex-direction:column;
+}
+
+.navbar{
+    flex-direction:column;
+    height:auto;
+    gap:15px;
+    padding:20px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:35px 20px;
+}
+
+.hero-left h1{
+    font-size:34px;
+}
+
+.navbar{
+    padding:20px;
+}
+
+.logo h2{
+    font-size:20px;
+}
+
+.circle{
+    width:100px;
+    height:100px;
+    font-size:22px;
+}
+
+.candidate-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.candidate-info p{
+    justify-content:center;
+}
+
+}
