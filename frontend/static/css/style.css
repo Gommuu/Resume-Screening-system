@@ -1,0 +1,651 @@
+/* ==================================================
+   AI Resume Screening System - Premium Dashboard CSS
+   Part 1 of 2
+   Continue by appending Part 2 after this file.
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fb;
+    color:#1f2937;
+    line-height:1.6;
+}
+
+a{text-decoration:none;}
+ul{list-style:none;}
+img{display:block;max-width:100%;}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    width:100%;
+    height:82px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 70px;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo img{
+    width:52px;
+    height:52px;
+}
+
+.logo h2{
+    color:#1d4ed8;
+    font-size:25px;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+}
+
+.nav-links li{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    color:#5b6475;
+    transition:.3s;
+}
+
+.nav-links li:hover,
+.active{
+    color:#2563eb;
+    font-weight:600;
+}
+
+.github-btn{
+    background:#111827;
+    color:#fff;
+    padding:12px 22px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.github-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:95%;
+    margin:30px auto;
+    border-radius:28px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:40px;
+    align-items:center;
+    padding:70px;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    right:-100px;
+    top:-120px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    left:-70px;
+    bottom:-70px;
+}
+
+.hero-left h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero-left span{
+    color:#fde047;
+}
+
+.hero-left p{
+    font-size:17px;
+    opacity:.95;
+}
+
+.hero-center ul{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.hero-center li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.hero-center i{
+    color:#22c55e;
+}
+
+.hero-right{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-right img{
+    width:280px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* ================= MAIN ================= */
+
+.main-container{
+    width:95%;
+    margin:35px auto;
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:30px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar-card{
+    background:#fff;
+    border-radius:24px;
+    padding:30px;
+    box-shadow:0 18px 40px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.sidebar-card:hover{
+    transform:translateY(-5px);
+}
+
+.sidebar-card h2{
+    margin-bottom:18px;
+    font-size:18px;
+}
+
+.resume-box{
+    border:2px dashed #3b82f6;
+    border-radius:18px;
+    padding:20px;
+    background:#eff6ff;
+    margin-bottom:28px;
+}
+
+.resume-file{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.resume-file i{
+    font-size:28px;
+    color:#2563eb;
+}
+
+.resume-file h4{
+    font-size:15px;
+}
+
+.resume-file p{
+    color:#6b7280;
+    font-size:13px;
+}
+
+.preview-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:#2563eb;
+    color:#fff;
+    padding:14px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.preview-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+select{
+    width:100%;
+    padding:14px;
+    margin-bottom:22px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    outline:none;
+}
+
+select:focus{
+    border-color:#2563eb;
+}
+
+.analyze-btn{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:15px;
+    background:#16a34a;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.analyze-btn:hover{
+    background:#15803d;
+    transform:translateY(-2px);
+}
+
+.support-text{
+    text-align:center;
+    margin-top:18px;
+    color:#6b7280;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+/* ==================================================
+   AI Resume Screening System - Premium Dashboard CSS
+   Part 2 of 2
+   Append this after Part 1.
+================================================== */
+
+/* ================= RIGHT PANEL ================= */
+
+.right-panel{
+    width:100%;
+}
+
+.right-panel h1{
+    font-size:30px;
+    margin-bottom:28px;
+    color:#111827;
+}
+
+/* ================= TOP CARD ================= */
+
+.top-card{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:22px;
+    margin-bottom:25px;
+}
+
+.candidate-card,
+.score-card,
+.skills-card,
+.overview-card,
+.missing-card,
+.recommend-card{
+    background:#fff;
+    border-radius:22px;
+    padding:24px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.candidate-card:hover,
+.score-card:hover,
+.skills-card:hover,
+.overview-card:hover,
+.missing-card:hover,
+.recommend-card:hover{
+    transform:translateY(-5px);
+}
+
+.candidate-card{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.candidate-card img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.candidate-title{
+    color:#6b7280;
+    font-size:14px;
+}
+
+.candidate-info h2{
+    margin:8px 0;
+    color:#111827;
+}
+
+.candidate-info p{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#555;
+    margin:8px 0;
+}
+
+/* ================= SCORE ================= */
+
+.score-card{
+    text-align:center;
+}
+
+.score-card h3{
+    margin-bottom:15px;
+    color:#6b7280;
+    font-size:15px;
+}
+
+.circle{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    background:conic-gradient(#2563eb 320deg,#e5e7eb 0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.circle.green{
+    background:conic-gradient(#22c55e 320deg,#e5e7eb 0);
+}
+
+.circle.blue{
+    background:conic-gradient(#2563eb 320deg,#e5e7eb 0);
+}
+
+.circle span{
+    width:112px;
+    height:112px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:700;
+}
+
+/* ================= ROWS ================= */
+
+.second-row,
+.third-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-bottom:22px;
+}
+
+.skills-card h2,
+.overview-card h2,
+.missing-card h2,
+.recommend-card h2{
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tags span{
+    background:#eaf3ff;
+    color:#2563eb;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tags span:hover{
+    background:#2563eb;
+    color:#fff;
+}
+
+.orange-tags span{
+    background:#fff4e8;
+    color:#ea580c;
+}
+
+.orange-tags span:hover{
+    background:#ea580c;
+    color:#fff;
+}
+
+.empty-text{
+    color:#6b7280;
+    font-style:italic;
+}
+
+/* ================= PROGRESS ================= */
+
+.skill{
+    margin-bottom:18px;
+}
+
+.skill label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:30px;
+    overflow:hidden;
+    margin-bottom:6px;
+}
+
+.progress div{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+}
+
+.skill span{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* ================= RECOMMENDATION ================= */
+
+.recommend-box{
+    display:flex;
+    gap:20px;
+    padding:22px;
+    background:#f0f9ff;
+    border-left:6px solid #2563eb;
+    border-radius:18px;
+}
+
+.recommend-box i{
+    font-size:36px;
+    color:#2563eb;
+}
+
+.recommend-box h3{
+    color:#1d4ed8;
+    margin-bottom:8px;
+}
+
+.recommend-box p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* ================= BUTTONS ================= */
+
+.bottom-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.download-btn,
+.another-btn,
+.home-btn{
+    border:none;
+    border-radius:12px;
+    padding:15px 28px;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.download-btn{background:#2563eb;}
+.another-btn{background:#16a34a;}
+.home-btn{background:#6b7280;}
+
+.download-btn:hover,
+.another-btn:hover,
+.home-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.sidebar-card,
+.candidate-card,
+.score-card,
+.skills-card,
+.overview-card,
+.missing-card,
+.recommend-card{
+    animation:fadeUp .8s ease;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+.hero{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.main-container{
+    grid-template-columns:1fr;
+}
+
+.top-card,
+.second-row,
+.third-row{
+    grid-template-columns:1fr;
+}
+
+.bottom-buttons{
+    flex-direction:column;
+}
+
+.navbar{
+    flex-direction:column;
+    height:auto;
+    padding:20px;
+    gap:16px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:40px 20px;
+}
+
+.hero-left h1{
+    font-size:34px;
+}
+
+.logo h2{
+    font-size:20px;
+}
+
+.circle{
+    width:120px;
+    height:120px;
+}
+
+.circle span{
+    width:88px;
+    height:88px;
+    font-size:24px;
+}
+
+.candidate-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.candidate-info p{
+    justify-content:center;
+}
+
+}
+
