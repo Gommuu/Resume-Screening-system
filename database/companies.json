@@ -2,26 +2,31 @@
   "google": {
     "software_engineer": ["python", "sql", "git", "machine learning", "docker"],
     "data_analyst": ["python", "sql", "power bi", "excel"],
-    "data_scientist": ["python", "sql", "machine learning", "statistics", "excel"]
+    "data_scientist": ["python", "sql", "machine learning", "statistics", "excel"],
+    "machine_learning_engineer": ["python", "machine learning", "tensorflow", "sql", "deep learning"]
   },
   "amazon": {
     "software_engineer": ["java", "python", "aws", "sql", "docker"],
     "cloud_engineer": ["aws", "docker", "linux", "python"],
-    "hr_manager": ["communication", "recruitment", "leadership", "excel"]
+    "hr_manager": ["communication", "recruitment", "leadership", "excel"],
+    "machine_learning_engineer": ["python", "machine learning", "aws", "sql", "tensorflow"]
   },
   "microsoft": {
     "software_engineer": ["c++", "python", "sql", "git", "azure"],
     "data_scientist": ["python", "sql", "machine learning", "statistics"],
-    "hr_manager": ["communication", "recruitment", "leadership"]
+    "hr_manager": ["communication", "recruitment", "leadership"],
+    "machine_learning_engineer": ["python", "machine learning", "azure", "deep learning", "sql"]
   },
   "infosys": {
     "software_engineer": ["java", "sql", "git", "javascript"],
     "hr_manager": ["communication", "recruitment", "leadership", "excel"],
-    "data_analyst": ["sql", "excel", "power bi", "python"]
+    "data_analyst": ["sql", "excel", "power bi", "python"],
+    "machine_learning_engineer": ["python", "machine learning", "sql", "pandas"]
   },
   "accenture": {
     "software_engineer": ["java", "python", "sql", "git"],
     "data_analyst": ["sql", "excel", "power bi"],
-    "hr_manager": ["communication", "recruitment", "leadership"]
+    "hr_manager": ["communication", "recruitment", "leadership"],
+    "machine_learning_engineer": ["python", "machine learning", "sql", "pandas"]
   }
 }

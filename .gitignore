@@ -1,1 +1,4 @@
-/venv
+venv/
+backend/__pycache__/
+uploads/
+reports/

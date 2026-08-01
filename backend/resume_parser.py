@@ -1,5 +1,6 @@
+import os
 import pdfplumber
-import docx
+from docx import Document
 
 def extract_text_from_pdf(pdf_path):
     text = ""
@@ -7,17 +8,21 @@ def extract_text_from_pdf(pdf_path):
         for page in pdf.pages:
             page_text = page.extract_text()
             if page_text:
-                text += page_text
+                text += page_text + "\n"
     return text
 
-
 def extract_text_from_docx(docx_path):
-    doc = docx.Document(docx_path)
+    document = Document(docx_path)
     text = ""
-    for paragraph in doc.paragraphs:
+    for paragraph in document.paragraphs:
         text += paragraph.text + "\n"
     return text
 
-if __name__ == "__main__":
-    sample_text = extract_text_from_pdf("../dataset/Resume.pdf")
-    print(sample_text)
+def extract_resume_text(file_path):
+    extension = os.path.splitext(file_path)[1].lower()
+    if extension == ".pdf":
+        return extract_text_from_pdf(file_path)
+    elif extension == ".docx":
+        return extract_text_from_docx(file_path)
+    else:
+        raise ValueError("Unsupported file format. Please upload PDF or DOCX.")

@@ -1,0 +1,442 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SkillSense Logo">
+        <h2>AI Resume Screening System</h2>
+    </div>
+
+    <ul class="nav-links">
+
+        <li class="active">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </li>
+
+        <li>
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+        </li>
+
+        <li>
+            <i class="fa-solid fa-circle-info"></i>
+            About
+        </li>
+
+    </ul>
+
+    <a href="https://github.com" class="github-btn" target="_blank">
+        <i class="fab fa-github"></i>
+        GitHub
+    </a>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1>
+            <span>AI</span>
+            Resume Screening System
+        </h1>
+
+        <p>
+            Upload a resume, choose a company and role,
+            and let AI evaluate the candidate with ATS scoring,
+            skill matching and intelligent recommendations.
+        </p>
+
+    </div>
+
+    <div class="hero-center">
+
+        <ul>
+
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                ATS Score Calculation
+            </li>
+
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Resume Match Analysis
+            </li>
+
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Missing Skill Detection
+            </li>
+
+            <li>
+                <i class="fa-solid fa-circle-check"></i>
+                Smart Recommendation
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img src="{{ url_for('static', filename='images/hero.png') }}"
+             alt="AI Resume Screening">
+
+    </div>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-container">
+
+    <!-- ================= LEFT PANEL ================= -->
+
+    <div class="left-panel">
+
+        <div class="sidebar-card">
+
+            <h2>1. Upload Resume</h2>
+
+            <div class="resume-box">
+
+                <input
+                    type="file"
+                    id="resumeUpload"
+                    accept=".pdf,.doc,.docx"
+                    hidden>
+
+                <label for="resumeUpload" class="preview-btn">
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload Resume
+
+                </label>
+
+                <div class="resume-file" id="resumeInfo">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <div>
+
+                        <h4 id="resumeName">
+
+                            No Resume Selected
+
+                        </h4>
+
+                        <p id="resumeSize">
+
+                            PDF / DOC / DOCX
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. Company</h2>
+
+            <select id="company">
+
+                <option value="">Select Company</option>
+
+                <option>Google</option>
+                <option>Microsoft</option>
+                <option>Amazon</option>
+                <option>Infosys</option>
+                <option>Accenture</option>
+
+            </select>
+
+            <h2>3. Job Role</h2>
+
+            <select id="jobRole">
+
+                <option value="">Select Job Role</option>
+
+                <option>Software Engineer</option>
+                <option>Data Analyst</option>
+                <option>Data Scientist</option>
+                <option>Machine Learning Engineer</option>
+                <option>HR Manager</option>
+
+            </select>
+
+            <button class="analyze-btn" id="analyzeBtn">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Analyze Resume
+
+            </button>
+
+            <p class="support-text">
+
+                Supported Formats:
+                PDF, DOC, DOCX
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT PANEL ================= -->
+
+    <div class="right-panel">
+
+        <h1>Analysis Results</h1>
+
+        <!-- ================= TOP RESULT CARD ================= -->
+
+        <div class="top-card">
+
+            <div class="candidate-card">
+
+                <img src="{{ url_for('static', filename='images/avatar.png') }}"
+                     alt="Candidate">
+
+                <div class="candidate-info">
+
+                    <p class="candidate-title">
+
+                        Candidate Information
+
+                    </p>
+
+                    <h2 id="candidateName">
+
+                        No Analysis Yet
+
+                    </h2>
+
+                    <p id="candidateEmail">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        --
+
+                    </p>
+
+                    <p id="candidatePhone">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        --
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="score-card">
+
+                <h3>ATS SCORE</h3>
+
+                <div class="circle green">
+
+                    <span id="atsScore">--</span>
+
+                </div>
+
+                <p id="atsStatus">Waiting for Analysis</p>
+
+            </div>
+
+            <div class="score-card">
+
+                <h3>RESUME MATCH</h3>
+
+                <div class="circle blue">
+
+                    <span id="resumeMatch">--</span>
+
+                </div>
+
+                <p id="matchStatus">Waiting for Analysis</p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= SECOND ROW ================= -->
+                <div class="second-row">
+
+            <!-- ================= MATCHED SKILLS ================= -->
+
+            <div class="skills-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Matched Skills
+
+                </h2>
+
+                <div class="tags" id="matchedSkills">
+
+                    <p class="empty-text">
+
+                        Upload a resume and click Analyze Resume to view matched skills.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ================= SKILL OVERVIEW ================= -->
+
+            <div class="overview-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    Skills Match Overview
+
+                </h2>
+
+                <div id="skillOverview">
+
+                    <div class="skill">
+
+                        <label>Waiting for analysis...</label>
+
+                        <div class="progress">
+
+                            <div style="width:0%"></div>
+
+                        </div>
+
+                        <span>0%</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= THIRD ROW ================= -->
+
+        <div class="third-row">
+
+            <!-- ================= MISSING SKILLS ================= -->
+
+            <div class="missing-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Missing Skills
+
+                </h2>
+
+                <div class="tags orange-tags" id="missingSkills">
+
+                    <p class="empty-text">
+
+                        Missing skills will appear here after analysis.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ================= RECOMMENDATION ================= -->
+
+            <div class="recommend-card">
+
+                <h2>
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    Recommendation
+
+                </h2>
+
+                <div class="recommend-box">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <div>
+
+                        <h3 id="recommendationTitle">
+
+                            Waiting for Analysis
+
+                        </h3>
+
+                        <p id="recommendationText">
+
+                            Upload a resume, select a company and job role,
+                            then click Analyze Resume to generate AI insights.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= ACTION BUTTONS ================= -->
+
+        <div class="bottom-buttons">
+
+            <button
+                class="download-btn"
+                id="downloadBtn">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Report
+
+            </button>
+
+            <button
+                class="another-btn"
+                id="resetBtn">
+
+                <i class="fa-solid fa-rotate-right"></i>
+
+                Analyze Another Resume
+
+            </button>
+
+            <button
+                class="home-btn"
+                onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+                <i class="fa-solid fa-house"></i>
+
+                Back To Home
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
