@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
 from flask_cors import CORS
 
@@ -10,7 +10,11 @@ from backend.similarity import calculate_similarity
 from backend.ats_score import calculate_ats_score
 from backend.recommendation import get_recommendation
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="frontend/templates",
+    static_folder="frontend/static"
+)
 CORS(app)
 
 UPLOAD_FOLDER = "uploads"
@@ -18,7 +22,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
 def home():
-    return "AI Resume Screening Backend is Running!"
+    return render_template("index.html")
 
 JOB_DESCRIPTION = """
 Looking for a Python Developer with SQL, Flask, Git,
@@ -34,7 +38,7 @@ REQUIRED_SKILLS = [
     "docker"
 ]
 
-@app.route("/upload", methods=["POST"])
+@app.route("/analyze", methods=["POST"])
 def upload_resume():
     file = request.files["resume"]
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
