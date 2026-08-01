@@ -1,0 +1,27 @@
+{
+  "google": {
+    "software_engineer": ["python", "sql", "git", "machine learning", "docker"],
+    "data_analyst": ["python", "sql", "power bi", "excel"],
+    "data_scientist": ["python", "sql", "machine learning", "statistics", "excel"]
+  },
+  "amazon": {
+    "software_engineer": ["java", "python", "aws", "sql", "docker"],
+    "cloud_engineer": ["aws", "docker", "linux", "python"],
+    "hr_manager": ["communication", "recruitment", "leadership", "excel"]
+  },
+  "microsoft": {
+    "software_engineer": ["c++", "python", "sql", "git", "azure"],
+    "data_scientist": ["python", "sql", "machine learning", "statistics"],
+    "hr_manager": ["communication", "recruitment", "leadership"]
+  },
+  "infosys": {
+    "software_engineer": ["java", "sql", "git", "javascript"],
+    "hr_manager": ["communication", "recruitment", "leadership", "excel"],
+    "data_analyst": ["sql", "excel", "power bi", "python"]
+  },
+  "accenture": {
+    "software_engineer": ["java", "python", "sql", "git"],
+    "data_analyst": ["sql", "excel", "power bi"],
+    "hr_manager": ["communication", "recruitment", "leadership"]
+  }
+}
