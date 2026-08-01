@@ -1,7 +1,13 @@
-import re
-
-def preprocess_text(text):
-    text = text.lower()                 # lowercase
-    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)  # punctuation remove
-    text = re.sub(r'\s+', ' ', text).strip()    # extra spaces remove
+import re 
+def clean_text(text):
+    text = text.lower()
+    text = text.replace("\n"," ")
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    text = text.strip()
     return text
+from resume_parser import extract_text_from_pdf
+if __name__ == "__main__":
+    raw_text = extract_text_from_pdf("../dataset/Resume.pdf")
+    cleaned = clean_text(raw_text)
+    print(cleaned)

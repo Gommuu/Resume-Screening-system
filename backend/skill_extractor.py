@@ -1,44 +1,14 @@
-from backend.preprocessing import preprocess_text
-
-SKILLS = [
-    "python",
-    "java",
-    "c++",
-    "sql",
-    "mysql",
-    "mongodb",
-    "html",
-    "css",
+SKILL_LIST = ["python",
+    "typescript",
     "javascript",
-    "react",
-    "nodejs",
-    "django",
-    "flask",
-    "machine learning",
-    "deep learning",
-    "tensorflow",
-    "keras",
-    "pandas",
-    "numpy",
-    "git"
-]
-
-
+    "c",
+    "java",
+    "php",
+    "mysql",
+    "node.js"]
 def extract_skills(text):
-    text = preprocess_text(text)
-
     found_skills = []
-
-    for skill in SKILLS:
-        if skill in text:
-            found_skills.append(skill)
-
+    for skills in SKILL_LIST:
+        if skills in text:
+            found_skills.append(skills)
     return found_skills
-
-
-if __name__ == "__main__":
-    sample = """
-    I know Python, SQL, Flask, Git and Machine Learning.
-    """
-
-    print(extract_skills(sample))
