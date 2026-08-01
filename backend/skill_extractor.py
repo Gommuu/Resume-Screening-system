@@ -22,8 +22,8 @@ def extract_skills(text):
     return found_skills
 
 
-from resume_parser import extract_text_from_pdf
-from preprocessing import clean_text
+from backend.resume_parser import extract_text_from_pdf
+from backend.preprocessing import clean_text
 
 if __name__ == "__main__":
     raw_text = extract_text_from_pdf("../dataset/R4.pdf")

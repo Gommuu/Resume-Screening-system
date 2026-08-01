@@ -9,10 +9,10 @@ def get_recommendation(score):
         return "Not Recommended"
     #test
 
-from resume_parser import extract_text_from_pdf
-from preprocessing import clean_text
-from skill_extractor import extract_skills
-from ats_score import calculate_ats_score
+from backend.resume_parser import extract_text_from_pdf
+from backend.preprocessing import clean_text
+from backend.skill_extractor import extract_skills
+from backend.ats_score import calculate_ats_score
 
 if __name__ == "__main__":
     raw_text = extract_text_from_pdf("../dataset/R4.pdf")

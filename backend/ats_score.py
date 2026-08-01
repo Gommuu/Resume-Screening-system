@@ -6,9 +6,9 @@ def calculate_ats_score(found_skills, required_skills):
     return round(score, 2)
 
 ##TESTS
-from resume_parser import extract_text_from_pdf
-from preprocessing import clean_text
-from skill_extractor import extract_skills
+from backend.resume_parser import extract_text_from_pdf
+from backend.preprocessing import clean_text
+from backend.skill_extractor import extract_skills
 
 if __name__ == "__main__":
     raw_text = extract_text_from_pdf("../dataset/R4.pdf")
