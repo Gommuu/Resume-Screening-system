@@ -59,7 +59,16 @@ def analyze_resume():
     matched_skills = [s for s in required_skills if s in skills]
     missing_skills = [s for s in required_skills if s not in skills]
 
-    job_description = f"Looking for a {job_role} skilled in {', '.join(required_skills)}."
+    job_description = f"""
+We are hiring a {job_role} at {company}. The ideal candidate should have strong 
+experience and hands-on skills in {', '.join(required_skills)}. This role requires 
+someone who can work independently, solve problems effectively, communicate clearly 
+with team members, and contribute to real projects using these technologies. 
+Candidates with relevant education, practical project experience, and a solid 
+understanding of {', '.join(required_skills)} are strongly encouraged to apply. 
+We value analytical thinking, adaptability, and a strong grasp of core skills 
+required for the {job_role} position.
+"""
     cleaned_job = clean_text(job_description)
     similarity = calculate_similarity(cleaned_text, cleaned_job)
 
@@ -101,6 +110,16 @@ def analyze_resume():
 @app.route("/download-report/<filename>")
 def download_report(filename):
     return send_file(f"reports/{filename}", as_attachment=True)
+
+
+#--------ROLES SELECION--------------
+@app.route("/roles/<company>")
+def get_roles(company):
+    company_key = company.lower().replace(" ", "_")
+    if company_key not in COMPANIES:
+        return jsonify([])
+    roles = list(COMPANIES[company_key].keys())
+    return jsonify(roles)
 
 
 if __name__ == "__main__":

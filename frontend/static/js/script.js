@@ -1,11 +1,11 @@
 // ==========================
 // DOM Elements
 // ==========================
-//
+
 const atsStatus = document.getElementById("atsStatus");
 const matchStatus = document.getElementById("matchStatus");
 const skillOverview = document.getElementById("skillOverview");
-//
+
 const uploadInput = document.getElementById("resumeUpload");
 const resumeName = document.getElementById("resumeName");
 const resumeSize = document.getElementById("resumeSize");
@@ -17,9 +17,37 @@ const resetBtn = document.getElementById("resetBtn");
 const company = document.getElementById("company");
 const jobRole = document.getElementById("jobRole");
 
+// ROLES SELECTION FOR DIFFERENT COMPANIES
+
+const roleDisplayNames = {
+    "software_engineer": "Software Engineer",
+    "data_analyst": "Data Analyst",
+    "data_scientist": "Data Scientist",
+    "machine_learning_engineer": "Machine Learning Engineer",
+    "hr_manager": "HR Manager",
+    "cloud_engineer": "Cloud Engineer"
+};
+
+company.addEventListener("change", async () => {
+    jobRole.innerHTML = '<option value="">Select Job Role</option>';
+
+    if (!company.value) return;
+
+    const response = await fetch(`http://127.0.0.1:5000/roles/${company.value}`);
+    const roles = await response.json();
+
+    roles.forEach(role => {
+        const option = document.createElement("option");
+        option.value = roleDisplayNames[role] || role;
+        option.textContent = roleDisplayNames[role] || role;
+        jobRole.appendChild(option);
+    });
+});
+
 // ==========================
 // Candidate Info
 // ==========================
+
 
 const candidateName = document.getElementById("candidateName");
 const candidateEmail = document.getElementById("candidateEmail");
