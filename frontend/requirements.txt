@@ -8,3 +8,4 @@ pycparser==3.0
 pypdfium2==5.12.1
 Flask
 requests
+gunicorn
