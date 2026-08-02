@@ -33,7 +33,7 @@ company.addEventListener("change", async () => {
 
     if (!company.value) return;
 
-    const response = await fetch(`http://127.0.0.1:5000/roles/${company.value}`);
+    const response = await fetch(`https://resume-screening-system-4s4p.onrender.com/roles/${company.value}`);
     const roles = await response.json();
 
     roles.forEach(role => {
@@ -123,7 +123,7 @@ analyzeBtn.addEventListener("click", async () => {
 
     try {
 
-       const response = await fetch("http://127.0.0.1:5000/analyze", {
+       const response = await fetch("https://resume-screening-system-4s4p.onrender.com/analyze", {
 
             method: "POST",
 
@@ -243,7 +243,7 @@ let lastReportUrl = "";
 
 downloadBtn.addEventListener("click", () => {
     if (lastReportUrl) {
-        window.open("http://127.0.0.1:5000" + lastReportUrl);
+        window.open("https://resume-screening-system-4s4p.onrender.com" + lastReportUrl);
     } else {
         alert("Please analyze a resume first.");
     }
