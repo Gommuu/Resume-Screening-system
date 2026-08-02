@@ -2,6 +2,10 @@
 // DOM Elements
 // ==========================
 
+const atsStatus = document.getElementById("atsStatus");
+const matchStatus = document.getElementById("matchStatus");
+const skillOverview = document.getElementById("skillOverview");
+
 const uploadInput = document.getElementById("resumeUpload");
 const resumeName = document.getElementById("resumeName");
 const resumeSize = document.getElementById("resumeSize");
@@ -13,9 +17,37 @@ const resetBtn = document.getElementById("resetBtn");
 const company = document.getElementById("company");
 const jobRole = document.getElementById("jobRole");
 
+// ROLES SELECTION FOR DIFFERENT COMPANIES
+
+const roleDisplayNames = {
+    "software_engineer": "Software Engineer",
+    "data_analyst": "Data Analyst",
+    "data_scientist": "Data Scientist",
+    "machine_learning_engineer": "Machine Learning Engineer",
+    "hr_manager": "HR Manager",
+    "cloud_engineer": "Cloud Engineer"
+};
+
+company.addEventListener("change", async () => {
+    jobRole.innerHTML = '<option value="">Select Job Role</option>';
+
+    if (!company.value) return;
+
+    const response = await fetch(`http://127.0.0.1:5000/roles/${company.value}`);
+    const roles = await response.json();
+
+    roles.forEach(role => {
+        const option = document.createElement("option");
+        option.value = roleDisplayNames[role] || role;
+        option.textContent = roleDisplayNames[role] || role;
+        jobRole.appendChild(option);
+    });
+});
+
 // ==========================
 // Candidate Info
 // ==========================
+
 
 const candidateName = document.getElementById("candidateName");
 const candidateEmail = document.getElementById("candidateEmail");
@@ -91,7 +123,7 @@ analyzeBtn.addEventListener("click", async () => {
 
     try {
 
-        const response = await fetch("/analyze", {
+       const response = await fetch("http://127.0.0.1:5000/analyze", {
 
             method: "POST",
 
@@ -137,6 +169,7 @@ function updateDashboard(data) {
     candidateName.textContent =
         data.name || "Candidate";
 
+    lastReportUrl = data.report_url || "";
     candidateEmail.innerHTML =
         `<i class="fa-regular fa-envelope"></i> ${data.email || "-"}`;
 
@@ -166,6 +199,7 @@ function updateDashboard(data) {
                 `<span>${skill}</span>`;
 
         });
+    
 
     }
 
@@ -182,7 +216,22 @@ function updateDashboard(data) {
         });
 
     }
+    atsStatus.textContent = data.ats_score >= 70 ? "Good Match" : data.ats_score >= 40 ? "Fair Match" : "Low Match";
+    matchStatus.textContent = data.resume_match >= 70 ? "Good Match" : data.resume_match >= 40 ? "Fair Match" : "Low Match";
 
+    skillOverview.innerHTML = "";
+    const allRequired = [...(data.matched_skills || []), ...(data.missing_skills || [])];
+    allRequired.forEach(skill => {
+        const isMatched = data.matched_skills.includes(skill);
+        const percent = isMatched ? 100 : 0;
+        skillOverview.innerHTML += `
+            <div class="skill">
+                <label>${skill}</label>
+                <div class="progress"><div style="width:${percent}%"></div></div>
+                <span>${percent}%</span>
+            </div>
+        `;
+    });
 }
 
 
@@ -190,10 +239,14 @@ function updateDashboard(data) {
 // Download Report
 // ==========================
 
+let lastReportUrl = "";
+
 downloadBtn.addEventListener("click", () => {
-
-    window.open("/download-report");
-
+    if (lastReportUrl) {
+        window.open("http://127.0.0.1:5000" + lastReportUrl);
+    } else {
+        alert("Please analyze a resume first.");
+    }
 });
 
 
